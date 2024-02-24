@@ -45,6 +45,7 @@ class NewsTVC: UITableViewCell {
         MainImg = UIImageView()
         MainImg.layer.cornerRadius = 20
         MainImg.contentMode = .scaleToFill
+        MainImg.layer.masksToBounds = true
         MainImg.translatesAutoresizingMaskIntoConstraints = false
         CenterView.addSubview(MainImg)
         NSLayoutConstraint.activate([
@@ -65,8 +66,8 @@ class NewsTVC: UITableViewCell {
         NSLayoutConstraint.activate([
             LblStavkView.leadingAnchor.constraint(equalTo: CenterView.leadingAnchor, constant: 10.0),
             LblStavkView.trailingAnchor.constraint(equalTo: CenterView.trailingAnchor, constant: -10.0),
-            LblStavkView.topAnchor.constraint(equalTo: MainImg.bottomAnchor, constant: -120.0),
-            LblStavkView.heightAnchor.constraint(equalToConstant: 110.0)
+            LblStavkView.topAnchor.constraint(equalTo: MainImg!.bottomAnchor, constant: -90.0),
+            LblStavkView.heightAnchor.constraint(equalToConstant: 80.0)
             
         ])
         

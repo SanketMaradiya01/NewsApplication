@@ -66,7 +66,7 @@ extension AllNewsViewController : UITableViewDelegate, UITableViewDataSource{
         cell.TitleLbl.text = ListData[indexPath.row].title
         cell.DesLabel.text = ListData[indexPath.row].descriptions
         let imageUrl = URL(string: ListData[indexPath.row].urlToImage ?? "")
-        cell.MainImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Default"))
+        cell.MainImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Logo"))
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -10,11 +10,13 @@ import SDWebImage
 
 class ViewController: UIViewController, APICallingParserDelegate,TechAPICallingParserDelegate,TeslaAPICallingParserDelegate {
     
+    var appdelegate: UIWindow?
+    //    appdelegate = UIApplication.shared.windows.first
     
+    let defaults = UserDefaults.standard
     
     var TopView : UIView!
-    var TitleLabel: UILabel!
-    var MoreBtn : UIButton!
+    var Logo: UIImageView!
     var ListView : UIView!
     var ListTitle: UILabel!
     var tableView : UITableView!
@@ -35,11 +37,13 @@ class ViewController: UIViewController, APICallingParserDelegate,TechAPICallingP
     var TeslaData : [ArticleModel] = []
     var TechData : [ArticleModel] = []
     
+    
+    
     var CatData = ["Tesla","business","TechCrunch"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "AccentColor")
+        view.backgroundColor = UIColor(named: "Mode")
         NewsUI()
         showActivityIndicator()
         loadParser()
@@ -100,38 +104,19 @@ class ViewController: UIViewController, APICallingParserDelegate,TechAPICallingP
             TopView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             TopView.heightAnchor.constraint(equalToConstant: 50.0)
         ])
-        TitleLabel = UILabel()
-        TitleLabel.textColor = .white
-        TitleLabel.text = "News App"
-        TitleLabel.textAlignment = .center
-        TitleLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
-        TitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        TopView.addSubview(TitleLabel)
+        Logo = UIImageView()
+        Logo.image = UIImage(named: "Logo")
+        Logo.translatesAutoresizingMaskIntoConstraints = false
+        TopView.addSubview(Logo)
         NSLayoutConstraint.activate([
-            TitleLabel.topAnchor.constraint(equalTo: TopView.topAnchor),
-            TitleLabel.leadingAnchor.constraint(equalTo: TopView.leadingAnchor),
-            TitleLabel.trailingAnchor.constraint(equalTo: TopView.trailingAnchor),
-            TitleLabel.bottomAnchor.constraint(equalTo: TopView.bottomAnchor)
-        ])
-        
-        MoreBtn = UIButton(type: .system)
-        MoreBtn.setTitle("More", for: .normal)
-        MoreBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        MoreBtn.setTitleColor(.white, for: .normal)
-        MoreBtn.backgroundColor = .clear
-        MoreBtn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        MoreBtn.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(MoreBtn)
-        NSLayoutConstraint.activate([
-            MoreBtn.topAnchor.constraint(equalTo: TopView.topAnchor),
-            MoreBtn.trailingAnchor.constraint(equalTo: TopView.trailingAnchor, constant: -10),
-            MoreBtn.bottomAnchor.constraint(equalTo: TopView.bottomAnchor)
+            Logo.centerXAnchor.constraint(equalTo: TopView.centerXAnchor),
+            Logo.centerYAnchor.constraint(equalTo: TopView.centerYAnchor)
         ])
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let width = self.view.frame.size.width * 1 - 20
-        let height = width / 2.5
+        let height = width / 2.2
         flowLayout.itemSize = CGSize(width: width, height: height) // Set your item size
         flowLayout.minimumLineSpacing = 10
         flowLayout.minimumInteritemSpacing = 10
@@ -144,10 +129,10 @@ class ViewController: UIViewController, APICallingParserDelegate,TechAPICallingP
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: TopView.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: TopView.bottomAnchor, constant: 5),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 150.0)
+            collectionView.heightAnchor.constraint(equalToConstant: 180.0)
         ])
         
         ListView = UIView()
@@ -187,6 +172,7 @@ class ViewController: UIViewController, APICallingParserDelegate,TechAPICallingP
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.backgroundColor = .clear
         tableView.layer.cornerRadius = 10
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(NewsTVC.self, forCellReuseIdentifier: "CellIdentifier")
@@ -227,7 +213,7 @@ extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource{
             cell.titleLabel.text = NewsData[reversedIndex].title
             cell.Description.text = NewsData[reversedIndex].descriptions
             if let imageUrl = URL(string: NewsData[reversedIndex].urlToImage ?? "") {
-                cell.Image.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Default"))
+                cell.Image.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Logo"))
             } else {
                 cell.Image.image = UIImage(named: "Default")
             }
@@ -273,7 +259,12 @@ extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource{
                     self.activityIndicator.stopAnimating()
                 }
             }
-        } else {}
+        } else if collectionView == collectionView{
+            let DetailedNewsVC = SingleNewsVC()
+            let reversedIndex = NewsData.count - 1 - indexPath.row
+            DetailedNewsVC.DetailedNewsData = NewsData[reversedIndex]
+            self.navigationController?.pushViewController(DetailedNewsVC, animated: true)
+        }
     }
     private func updateDataAndReloadViews(data: [ArticleModel]) {
         NewsData = data
@@ -292,14 +283,21 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier") as! NewsTVC
         cell.backgroundColor = .clear
+        cell.layer.cornerRadius = 10
+        cell.selectionStyle = .none
         cell.TitleLbl.text = NewsData[indexPath.row].title
         cell.DesLabel.text = NewsData[indexPath.row].descriptions
         let imageUrl = URL(string: NewsData[indexPath.row].urlToImage ?? "")
-        cell.MainImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Default"))
+        cell.MainImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "Logo"))
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let DetailedVC = SingleNewsVC()
+        DetailedVC.DetailedNewsData = NewsData[indexPath.row]
+        self.navigationController?.pushViewController(DetailedVC, animated: true)
     }
 }
 //Timer

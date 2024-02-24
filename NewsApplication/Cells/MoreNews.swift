@@ -11,8 +11,8 @@ class MoreNews: UICollectionViewCell {
     let moreLabel: UILabel = {
             let label = UILabel()
             label.text = "More"
-            label.textAlignment = .center
-            label.textColor = .white
+            label.textAlignment = .left
+        label.textColor = .black
             return label
         }()
 

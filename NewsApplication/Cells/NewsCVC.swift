@@ -38,6 +38,8 @@ class NewsCVC: UICollectionViewCell {
         
         Image = UIImageView()
         Image.contentMode = .scaleAspectFill
+        Image.layer.cornerRadius = 10
+        Image.layer.masksToBounds = true
         Image.translatesAutoresizingMaskIntoConstraints = false
         mainView.addSubview(Image)
         NSLayoutConstraint.activate([
@@ -56,10 +58,10 @@ class NewsCVC: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         Image.addSubview(stackView)
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 10.0),
-            stackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -10.0),
-            stackView.topAnchor.constraint(equalTo: Image!.bottomAnchor, constant: -120.0),
-            stackView.heightAnchor.constraint(equalToConstant: 110.0)
+            stackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15.0),
+            stackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15.0),
+            stackView.topAnchor.constraint(equalTo: Image!.bottomAnchor, constant: -90.0),
+            stackView.heightAnchor.constraint(equalToConstant: 80.0)
 
         ])
         
