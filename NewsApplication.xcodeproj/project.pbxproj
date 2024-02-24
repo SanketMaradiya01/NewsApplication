@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0E77972B89A18400DD22CC /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E77962B89A18400DD22CC /* APIModel.swift */; };
+		CC0E77992B89A40300DD22CC /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E77982B89A40300DD22CC /* ArticleModel.swift */; };
+		CC0E779B2B89A44200DD22CC /* SourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E779A2B89A44200DD22CC /* SourceModel.swift */; };
+		CC0E779F2B89A94A00DD22CC /* BusinessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E779E2B89A94A00DD22CC /* BusinessParser.swift */; };
+		CC0E77A12B89A95C00DD22CC /* TechParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E77A02B89A95C00DD22CC /* TechParser.swift */; };
+		CC0E77A32B89A96F00DD22CC /* TeslaParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E77A22B89A96F00DD22CC /* TeslaParser.swift */; };
+		CC8487292B8852EB00274FD2 /* MoreNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8487282B8852EB00274FD2 /* MoreNews.swift */; };
+		CC84872C2B88543C00274FD2 /* AllNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84872B2B88543C00274FD2 /* AllNewsViewController.swift */; };
+		CC84872F2B88C95B00274FD2 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84872E2B88C95B00274FD2 /* Structures.swift */; };
 		CC9D15B32B87652C0074ACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D15B22B87652C0074ACF5 /* AppDelegate.swift */; };
 		CC9D15B52B87652C0074ACF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D15B42B87652C0074ACF5 /* SceneDelegate.swift */; };
 		CC9D15B72B87652C0074ACF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D15B62B87652C0074ACF5 /* ViewController.swift */; };
@@ -22,6 +31,15 @@
 		41AB9903880DF7B51A06B5AC /* Pods-NewsApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApplication.debug.xcconfig"; path = "Target Support Files/Pods-NewsApplication/Pods-NewsApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		B39891E6F28A7BBDBEFEFAA8 /* Pods-NewsApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApplication.release.xcconfig"; path = "Target Support Files/Pods-NewsApplication/Pods-NewsApplication.release.xcconfig"; sourceTree = "<group>"; };
 		C6B72B29ED89AB347668BFE2 /* Pods_NewsApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0E77962B89A18400DD22CC /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		CC0E77982B89A40300DD22CC /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		CC0E779A2B89A44200DD22CC /* SourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceModel.swift; sourceTree = "<group>"; };
+		CC0E779E2B89A94A00DD22CC /* BusinessParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessParser.swift; sourceTree = "<group>"; };
+		CC0E77A02B89A95C00DD22CC /* TechParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechParser.swift; sourceTree = "<group>"; };
+		CC0E77A22B89A96F00DD22CC /* TeslaParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaParser.swift; sourceTree = "<group>"; };
+		CC8487282B8852EB00274FD2 /* MoreNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNews.swift; sourceTree = "<group>"; };
+		CC84872B2B88543C00274FD2 /* AllNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNewsViewController.swift; sourceTree = "<group>"; };
+		CC84872E2B88C95B00274FD2 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		CC9D15AF2B87652C0074ACF5 /* NewsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9D15B22B87652C0074ACF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC9D15B42B87652C0074ACF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,8 +78,36 @@
 				41AB9903880DF7B51A06B5AC /* Pods-NewsApplication.debug.xcconfig */,
 				B39891E6F28A7BBDBEFEFAA8 /* Pods-NewsApplication.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CC0E779C2B89A8E900DD22CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC0E77962B89A18400DD22CC /* APIModel.swift */,
+				CC0E77982B89A40300DD22CC /* ArticleModel.swift */,
+				CC0E779A2B89A44200DD22CC /* SourceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC0E779D2B89A91100DD22CC /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				CC0E779E2B89A94A00DD22CC /* BusinessParser.swift */,
+				CC0E77A02B89A95C00DD22CC /* TechParser.swift */,
+				CC0E77A22B89A96F00DD22CC /* TeslaParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		CC84872A2B88540F00274FD2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC9D15B62B87652C0074ACF5 /* ViewController.swift */,
+				CC84872B2B88543C00274FD2 /* AllNewsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		CC9D15A62B87652C0074ACF5 = {
@@ -85,10 +131,13 @@
 		CC9D15B12B87652C0074ACF5 /* NewsApplication */ = {
 			isa = PBXGroup;
 			children = (
+				CC0E779D2B89A91100DD22CC /* Parser */,
+				CC0E779C2B89A8E900DD22CC /* Models */,
+				CC84872A2B88540F00274FD2 /* Controllers */,
 				CC9D15CC2B8778490074ACF5 /* Cells */,
 				CC9D15B22B87652C0074ACF5 /* AppDelegate.swift */,
 				CC9D15B42B87652C0074ACF5 /* SceneDelegate.swift */,
-				CC9D15B62B87652C0074ACF5 /* ViewController.swift */,
+				CC84872E2B88C95B00274FD2 /* Structures.swift */,
 				CC9D15B82B87652C0074ACF5 /* Main.storyboard */,
 				CC9D15BB2B87652E0074ACF5 /* Assets.xcassets */,
 				CC9D15BD2B87652E0074ACF5 /* LaunchScreen.storyboard */,
@@ -102,6 +151,7 @@
 			children = (
 				CC9D15CE2B8778780074ACF5 /* NewsTVC.swift */,
 				CC9D15D02B87789A0074ACF5 /* NewsCVC.swift */,
+				CC8487282B8852EB00274FD2 /* MoreNews.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -221,11 +271,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC0E779F2B89A94A00DD22CC /* BusinessParser.swift in Sources */,
 				CC9D15B72B87652C0074ACF5 /* ViewController.swift in Sources */,
 				CC9D15B32B87652C0074ACF5 /* AppDelegate.swift in Sources */,
 				CC9D15D12B87789A0074ACF5 /* NewsCVC.swift in Sources */,
+				CC0E77A12B89A95C00DD22CC /* TechParser.swift in Sources */,
 				CC9D15CF2B8778780074ACF5 /* NewsTVC.swift in Sources */,
+				CC0E77A32B89A96F00DD22CC /* TeslaParser.swift in Sources */,
+				CC0E779B2B89A44200DD22CC /* SourceModel.swift in Sources */,
+				CC0E77992B89A40300DD22CC /* ArticleModel.swift in Sources */,
 				CC9D15B52B87652C0074ACF5 /* SceneDelegate.swift in Sources */,
+				CC8487292B8852EB00274FD2 /* MoreNews.swift in Sources */,
+				CC84872C2B88543C00274FD2 /* AllNewsViewController.swift in Sources */,
+				CC0E77972B89A18400DD22CC /* APIModel.swift in Sources */,
+				CC84872F2B88C95B00274FD2 /* Structures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

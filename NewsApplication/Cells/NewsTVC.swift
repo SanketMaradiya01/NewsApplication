@@ -23,37 +23,14 @@ class NewsTVC: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         CellUI()
-        scaleImageToFit()
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func scaleImageToFit() {
-        // Ensure that there is an image in the imageView
-        guard let image = MainImg.image else {
-            return
-        }
-        
-        // Calculate the aspect ratio of the image
-        let aspectRatio = image.size.width / image.size.height
-        
-        // Set the frame of the imageView to fit the image while maintaining aspect ratio
-        if image.size.width > image.size.height {
-            let newWidth = MainImg.frame.width
-            let newHeight = newWidth / aspectRatio
-            MainImg.frame.size = CGSize(width: newWidth, height: newHeight)
-        } else {
-            let newHeight = MainImg.frame.height
-            let newWidth = newHeight * aspectRatio
-            MainImg.frame.size = CGSize(width: newWidth, height: newHeight)
-        }
-    }
     func CellUI(){
-        
-        self.contentView.backgroundColor = .clear
-        
+    
         CenterView = UIView()
         CenterView.backgroundColor = .clear
         CenterView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,21 +43,23 @@ class NewsTVC: UITableViewCell {
         ])
         
         MainImg = UIImageView()
+        MainImg.layer.cornerRadius = 20
+        MainImg.contentMode = .scaleToFill
         MainImg.translatesAutoresizingMaskIntoConstraints = false
         CenterView.addSubview(MainImg)
-        MainImg.backgroundColor = .clear
         NSLayoutConstraint.activate([
-            MainImg.topAnchor.constraint(equalTo: CenterView.topAnchor),
-            MainImg.leadingAnchor.constraint(equalTo: CenterView.leadingAnchor),
-            MainImg.trailingAnchor.constraint(equalTo: CenterView.trailingAnchor),
-            MainImg.bottomAnchor.constraint(equalTo: CenterView.bottomAnchor)
+            MainImg.topAnchor.constraint(equalTo: CenterView.topAnchor, constant: 4),
+            MainImg.leadingAnchor.constraint(equalTo: CenterView.leadingAnchor, constant: 4),
+            MainImg.trailingAnchor.constraint(equalTo: CenterView.trailingAnchor, constant: -4),
+            MainImg.bottomAnchor.constraint(equalTo: CenterView.bottomAnchor, constant: -4)
         ])
         
         LblStavkView = UIStackView()
         LblStavkView.alignment = .fill
+        LblStavkView.layer.cornerRadius = 10
         LblStavkView.distribution = .fillProportionally
         LblStavkView.axis = .vertical
-        LblStavkView.backgroundColor = .clear
+        LblStavkView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         LblStavkView.translatesAutoresizingMaskIntoConstraints = false
         MainImg.addSubview(LblStavkView)
         NSLayoutConstraint.activate([
@@ -98,12 +77,13 @@ class NewsTVC: UITableViewCell {
         TitleLbl.translatesAutoresizingMaskIntoConstraints = false
         LblStavkView.addArrangedSubview(TitleLbl)
         NSLayoutConstraint.activate([
-            TitleLbl.heightAnchor.constraint(equalToConstant: 35.0)
+            TitleLbl.heightAnchor.constraint(equalToConstant: 30.0)
         ])
+        
         DesLabel = UILabel()
         DesLabel.text = "Title"
         DesLabel.textColor = .white
-        DesLabel.numberOfLines = 2
+        DesLabel.numberOfLines = 4
         DesLabel.translatesAutoresizingMaskIntoConstraints = false
         LblStavkView.addArrangedSubview(DesLabel)
         NSLayoutConstraint.activate([

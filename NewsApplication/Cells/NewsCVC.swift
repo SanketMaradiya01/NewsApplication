@@ -18,31 +18,10 @@ class NewsCVC: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         CellUI()
-        scaleImageToFit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    func scaleImageToFit() {
-        // Ensure that there is an image in the imageView
-        guard let image = Image.image else {
-            return
-        }
-        
-        // Calculate the aspect ratio of the image
-        let aspectRatio = image.size.width / image.size.height
-        
-        // Set the frame of the imageView to fit the image while maintaining aspect ratio
-        if image.size.width > image.size.height {
-            let newWidth = Image.frame.width
-            let newHeight = newWidth / aspectRatio
-            Image.frame.size = CGSize(width: newWidth, height: newHeight)
-        } else {
-            let newHeight = Image.frame.height
-            let newWidth = newHeight * aspectRatio
-            Image.frame.size = CGSize(width: newWidth, height: newHeight)
-        }
     }
     func CellUI(){
         contentView.backgroundColor = .clear
@@ -58,21 +37,22 @@ class NewsCVC: UICollectionViewCell {
         ])
         
         Image = UIImageView()
-        Image.contentMode = .scaleAspectFit
+        Image.contentMode = .scaleAspectFill
         Image.translatesAutoresizingMaskIntoConstraints = false
         mainView.addSubview(Image)
         NSLayoutConstraint.activate([
-            Image.topAnchor.constraint(equalTo: mainView.topAnchor),
-            Image.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
-            Image.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            Image.bottomAnchor.constraint(equalTo: mainView.bottomAnchor)
+            Image.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0.0),
+            Image.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 0.0),
+            Image.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 0.0),
+            Image.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0.0)
         ])
         
         stackView = UIStackView()
+        stackView.layer.cornerRadius = 10
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
-        stackView.backgroundColor = .clear
+        stackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         Image.addSubview(stackView)
         NSLayoutConstraint.activate([
@@ -90,12 +70,12 @@ class NewsCVC: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 35.0)
+            titleLabel.heightAnchor.constraint(equalToConstant: 30.0)
         ])
         Description = UILabel()
         Description.text = "Title"
         Description.textColor = .white
-        Description.numberOfLines = 2
+        Description.numberOfLines = 3
         Description.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(Description)
         NSLayoutConstraint.activate([
